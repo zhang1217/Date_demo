@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
             long parseDate = Tools.GetDate(model.Date + " 00:00:00");
             long nowDate = Tools.GetNowDateTime();
             if (parseDate > nowDate) {
-                model.HaveDay = "+," + ((parseDate - nowDate) / (1000 * 60 * 60 * 24)+1);
+                model.HaveDay = "+," + ((parseDate - nowDate) / (1000 * 60 * 60 * 24));
                 HaveModel.add(model);
             } else {
                 model.HaveDay = "-," + (nowDate - parseDate) / (1000 * 60 * 60 * 24);

@@ -40,7 +40,7 @@ public class AppWidgetService extends Service {
                     long parseDate = Tools.GetDate(model.Date + " 00:00:00");
                     long nowDate = Tools.GetNowDateTime();
                     if (parseDate > nowDate) {
-                        day = (int) ((parseDate - nowDate) / (1000 * 60 * 60 * 24) + 1);
+                        day = (int) ((parseDate - nowDate) / (1000 * 60 * 60 * 24));
                     } else {
                         day = 0;
                     }
