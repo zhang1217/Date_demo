@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/date_info_item_height"
+        android:background="@color/colorGray"
+        android:layout_marginTop="@dimen/date_info_item_top"
+        android:layout_marginRight="@dimen/date_info_item_two_sides"
+        android:layout_marginLeft="@dimen/date_info_item_two_sides"
+        >
+
+        <TextView
+            android:id="@+id/id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            />
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ceshidasdasdsad"
+            android:textSize="@dimen/date_name_size"
+            android:layout_marginLeft="@dimen/date_info_item_text_view_two_sides"
+            android:layout_marginTop="@dimen/date_info_item_text_view_two_sides"
+            />
+        <TextView
+            android:id="@+id/desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ceshidasdasdsad"
+            android:textSize="@dimen/date_name_size"
+            android:layout_marginLeft="@dimen/date_info_item_text_view_two_sides"
+            android:layout_marginTop="@dimen/date_info_item_top_below"
+            android:layout_below="@id/name"
+            />
+        <TextView
+            android:id="@+id/haveDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ceshidasdasdsad"
+            android:textSize="@dimen/date_name_size"
+            android:layout_marginRight="@dimen/date_info_item_text_view_two_sides"
+            android:layout_marginTop="@dimen/date_info_item_text_view_two_sides"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/colorRed"
+            />
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ceshidasdasdsad"
+            android:textSize="@dimen/date_name_size"
+            android:layout_marginRight="@dimen/date_info_item_text_view_two_sides"
+            android:layout_marginTop="@dimen/date_info_item_top_below"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/haveDay"
+            />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,25 @@
+<resources>
+    <!--项目名称-->
+    <string name="app_name">事件列表</string>
+    <string name="add_date_app_name">添加事件</string>
+    <!--保存的文件名字-->
+    <string name="share_name">Date</string><!--事件列表-->
+    <string name="share_app_widget_name">APP_Widget</string><!--APPWidget-->
+
+
+    <!--menu菜单-->
+    <string name="main_menu_add">添加</string>
+    <string name="add_date_menu_add">完成</string>
+
+    <!--添加页面信息-->
+    <string name="edit_name_hint">请输入事件名称</string>
+    <string name="edit_date_hint">请选择事件日期</string>
+    <string name="edit_desc_hint">请输入事件备注(可以为空)</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+
+    <!--appwidget服务多少次调用一次  10分-->
+    <string name="app_widget_service_timer">600000</string>
+
+
+</resources>

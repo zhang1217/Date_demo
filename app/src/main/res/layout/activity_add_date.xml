@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/addDate_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGray"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/edit_text_height"
+        android:layout_marginLeft="@dimen/edit_text_two_sides"
+        android:layout_marginRight="@dimen/edit_text_two_sides"
+        android:layout_marginTop="@dimen/edit_text_top"
+        android:background="@color/colorWhite"
+        android:hint="@string/edit_name_hint"
+        android:textColorHint="@color/colorGray" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/edit_text_height"
+        android:layout_marginLeft="@dimen/edit_text_two_sides"
+        android:layout_marginRight="@dimen/edit_text_two_sides"
+        android:layout_marginTop="@dimen/edit_text_top">
+
+        <EditText
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorWhite"
+            android:focusable="false"
+            android:hint="@string/edit_date_hint"
+            android:textColorHint="@color/colorGray" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/icon_right" />
+
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/edit_text_two_sides"
+        android:layout_marginRight="@dimen/edit_text_two_sides"
+        android:layout_marginTop="@dimen/edit_text_top"
+        android:background="@color/colorWhite"
+        android:gravity="top"
+        android:hint="@string/edit_desc_hint"
+        android:inputType="textMultiLine"
+        android:minLines="4"
+        android:paddingTop="10dp"
+        android:textColorHint="@color/colorGray" />
+
+</LinearLayout>

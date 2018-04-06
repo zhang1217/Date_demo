@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="tab_title">
+        <item>首页</item>
+        <item>历史事件</item>
+    </array>
+    <array name="menu_name">
+        <item>删除</item>
+        <item>查看</item>
+    </array>
+</resources>
