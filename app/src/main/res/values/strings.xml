@@ -1,6 +1,6 @@
 <resources>
     <!--项目名称-->
-    <string name="app_name">事件列表</string>
+    <string name="app_name">日期倒计时</string>
     <string name="add_date_app_name">添加事件</string>
     <!--保存的文件名字-->
     <string name="share_name">Date</string><!--事件列表-->
