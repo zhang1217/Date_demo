@@ -1,7 +1,9 @@
 package com.binbin.date_demo;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,11 +14,13 @@ import com.binbin.date_demo.FragmentPackge.MainFragment;
 import com.binbin.date_demo.Model.DateModel;
 import com.gigamole.library.navigationtabstrip.NavigationTabStrip;
 
+import java.security.cert.TrustAnchor;
 import java.util.ArrayList;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
+    //2018-4-7-11-12
     //region 变量
     //tab视图
     private NavigationTabStrip navigationTabStrip;
@@ -73,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
     }
     //endregion
 
