@@ -7,7 +7,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/date_info_item_height"
-        android:background="@color/colorGray"
+        android:background="@color/qmui_config_color_15_pure_black"
         android:layout_marginTop="@dimen/date_info_item_top"
         android:layout_marginRight="@dimen/date_info_item_two_sides"
         android:layout_marginLeft="@dimen/date_info_item_two_sides"

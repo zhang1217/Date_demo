@@ -1,12 +1,16 @@
 package com.binbin.date_demo;
 
 import android.annotation.SuppressLint;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.binbin.date_demo.Model.DateModel;
+import com.binbin.date_demo.Model.ShowNotification;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -16,6 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
+import java.util.prefs.Preferences;
 
 /**
  * Created by 彬彬 on 2018/3/28.
@@ -154,8 +159,10 @@ public class Tools {
     //endregion
 
     //region 获取随机数
+
     /**
      * 获取随机数
+     *
      * @param max 最大值
      * @return 返回随机数
      */
@@ -176,6 +183,48 @@ public class Tools {
      */
     public static void Toast(Context context, String message, int time) {
         Toast.makeText(context, message, time).show();
+    }
+    //endregion
+
+    //region  实例化通知
+
+    /**
+     * 实例化通知
+     *
+     * @param context 上下文
+     * @param model   模型
+     * @param manager 通知栏服务
+     * @param id      通知栏ID
+     */
+    public static void ShowNotification(Context context, ShowNotification model, NotificationManager manager, int id) {
+        Notification notification = new Notification.Builder(context)
+                .setContentTitle(model.title)
+                .setContentText(model.text)
+                .setSubText(model.subText)
+                .setSmallIcon(model.smallIcon)
+                .setLargeIcon(model.lagerIcon)
+                .setWhen(model.when)
+                .setAutoCancel(model.autoCanel)
+                .setDefaults(model.defaults)
+                .setVisibility(model.visibility)
+                .build();
+        manager.notify(id, notification);
+    }
+    //endregion
+
+    //region 编辑Preferences
+
+    /**
+     * 编辑Preferences
+     * @param context 上下文
+     * @param key key
+     * @param name 文件名
+     * @param value 存储的值
+     */
+    public static void EditPreferences(Context context, String key, String name, String value) {
+        SharedPreferences.Editor editor = context.getSharedPreferences(name, Context.MODE_PRIVATE).edit();
+        editor.putString(key, value);
+        editor.apply();
     }
     //endregion
 

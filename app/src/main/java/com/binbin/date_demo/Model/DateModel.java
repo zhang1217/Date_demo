@@ -11,4 +11,5 @@ public class DateModel
     public String Date;//事件日期
     public String Desc;//事件描述
     public String HaveDay;//几天
+    public int isSend;//是否发送通知
 }

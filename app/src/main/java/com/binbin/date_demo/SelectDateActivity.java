@@ -41,7 +41,9 @@ public class SelectDateActivity extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setAction(UPDATE_MODEL);
                 intent.putExtra("thisAppWidgetID", thisAppWidgetID);
-                intent.putExtra("model", Tools.ToJson(HaveModel.get(position)));
+                DateModel model = HaveModel.get(position);
+                model.isSend = 0;
+                intent.putExtra("model", Tools.ToJson(model));
                 sendBroadcast(intent);
                 finish();
             }

@@ -20,7 +20,8 @@
     <!--app_widget-->
     <dimen name="min_height">45dp</dimen>
     <dimen name="min_width">45dp</dimen>
-    <dimen name="app_widget_name">10dp</dimen>
+    <dimen name="app_widget_name">15dip</dimen>
+    <dimen name="app_widget_day">15dip</dimen>
 
 
 </resources>

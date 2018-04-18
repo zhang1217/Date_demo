@@ -2,18 +2,22 @@ package com.binbin.date_demo.AppWidget;
 
 import android.annotation.SuppressLint;
 import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.BitmapFactory;
 import android.graphics.ColorSpace;
 import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
 import com.binbin.date_demo.Model.DateModel;
+import com.binbin.date_demo.Model.ShowNotification;
 import com.binbin.date_demo.R;
 import com.binbin.date_demo.SelectDateActivity;
 import com.binbin.date_demo.Service.AppWidgetService;
@@ -35,7 +39,7 @@ public class DateAppWidget extends AppWidgetProvider {
     private static int thisAppWidgetID;
 
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
-        Log.i("debug", thisAppWidgetID + ":updateAppWidget");
+        //Log.i("debug", thisAppWidgetID + ":updateAppWidget");
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.date_app_widget);
         Intent intent = new Intent(context, SelectDateActivity.class);
         intent.putExtra("thisAppWidgetID", thisAppWidgetID);
@@ -55,12 +59,12 @@ public class DateAppWidget extends AppWidgetProvider {
         Intent intent = new Intent(context, AppWidgetService.class);
         context.stopService(intent);
         context.startService(intent);
-        Log.i("debug", "onUpdate");
+        //Log.i("debug", "onUpdate");
     }
 
     @Override
     public void onEnabled(Context context) {
-        Log.i("debug", "onEnabled:服务已启动");
+        //Log.i("debug", "onEnabled:服务已启动");
     }
 
     @Override
@@ -70,7 +74,7 @@ public class DateAppWidget extends AppWidgetProvider {
         SharedPreferences.Editor editor = context.getSharedPreferences(context.getResources().getString(R.string.share_app_widget_name), context.MODE_PRIVATE).edit();
         editor.clear();
         editor.apply();
-        Log.i("debug", "onDisabled:服务已结束");
+        //Log.i("debug", "onDisabled:服务已结束");
     }
 
     @Override
@@ -100,6 +104,24 @@ public class DateAppWidget extends AppWidgetProvider {
                 long nowDate = Tools.GetNowDateTime();
                 if (parseDate > nowDate) {
                     day = (int) ((parseDate - nowDate) / (1000 * 60 * 60 * 24)+1);
+                    if (day <= 2 && model.isSend == 0) {
+                        //发送通知
+                        NotificationManager manager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
+                        ShowNotification notification = new ShowNotification(model.Name, "您的" + model.Name + "还有两天就到了", model.Desc, R.drawable.time,
+                                BitmapFactory.decodeResource(context.getResources(), R.drawable.time), System.currentTimeMillis(), true, Notification.DEFAULT_ALL, Notification.VISIBILITY_PRIVATE);
+                        Tools.ShowNotification(context.getApplicationContext(), notification, manager, 0);
+                        model.isSend = 2;
+                        Tools.EditPreferences(context.getApplicationContext(), key, context.getResources().getString(R.string.share_app_widget_name), Tools.ToJson(model));
+                    }
+                    if (day < 1 && model.isSend == 2) {
+                        //发送通知
+                        NotificationManager manager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
+                        ShowNotification notification = new ShowNotification(model.Name, "您的" + model.Name + "就要到了", model.Desc, R.drawable.time,
+                                BitmapFactory.decodeResource(context.getResources(), R.drawable.time), System.currentTimeMillis(), true, Notification.DEFAULT_ALL, Notification.VISIBILITY_PRIVATE);
+                        Tools.ShowNotification(context, notification, manager, 0);
+                        model.isSend = 1;
+                        Tools.EditPreferences(context, key, context.getResources().getString(R.string.share_app_widget_name), Tools.ToJson(model));
+                    }
                 } else {
                     day = 0;
                 }

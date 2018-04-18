@@ -1,8 +1,13 @@
 package com.binbin.date_demo;
 
 import android.app.Fragment;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Icon;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +17,7 @@ import android.view.MenuItem;
 
 import com.binbin.date_demo.FragmentPackge.MainFragment;
 import com.binbin.date_demo.Model.DateModel;
+import com.binbin.date_demo.Model.ShowNotification;
 import com.gigamole.library.navigationtabstrip.NavigationTabStrip;
 
 import java.security.cert.TrustAnchor;
@@ -20,7 +26,6 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    //2018-4-7-11-12
     //region 变量
     //tab视图
     private NavigationTabStrip navigationTabStrip;
@@ -39,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         GetInfo();
         //初始化
         Init();
+
     }
     //endregion
 
