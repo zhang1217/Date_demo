@@ -103,7 +103,7 @@ public class DateAppWidget extends AppWidgetProvider {
                 long parseDate = Tools.GetDate(model.Date + " 00:00:00");
                 long nowDate = Tools.GetNowDateTime();
                 if (parseDate > nowDate) {
-                    day = (int) ((parseDate - nowDate) / (1000 * 60 * 60 * 24)+1);
+                    day = (int) ((parseDate - nowDate) / (1000 * 60 * 60 * 24) + 1);
                     if (day <= 2 && model.isSend == 0) {
                         //发送通知
                         NotificationManager manager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);

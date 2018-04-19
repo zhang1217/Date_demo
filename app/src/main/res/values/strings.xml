@@ -5,6 +5,7 @@
     <!--保存的文件名字-->
     <string name="share_name">Date</string><!--事件列表-->
     <string name="share_app_widget_name">APP_Widget</string><!--APPWidget-->
+    <string name="permission_name">Permission</string><!--权限文件夹-->
 
 
     <!--menu菜单-->

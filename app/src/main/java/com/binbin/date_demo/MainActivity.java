@@ -1,14 +1,11 @@
 package com.binbin.date_demo;
 
-import android.app.Fragment;
-import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Icon;
-import android.support.v4.view.ViewPager;
+import android.net.Uri;
+import android.os.Build;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,10 +14,8 @@ import android.view.MenuItem;
 
 import com.binbin.date_demo.FragmentPackge.MainFragment;
 import com.binbin.date_demo.Model.DateModel;
-import com.binbin.date_demo.Model.ShowNotification;
 import com.gigamole.library.navigationtabstrip.NavigationTabStrip;
 
-import java.security.cert.TrustAnchor;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -44,6 +39,12 @@ public class MainActivity extends AppCompatActivity {
         GetInfo();
         //初始化
         Init();
+
+        //获取权限
+        String item = Tools.ReadPreferences(this, "NotificationPermission", getResources().getString(R.string.permission_name));
+        if (!NotificationManagerCompat.from(this).areNotificationsEnabled() || item.equals("") || item.equals("0")) {
+            Tools.CheckNotificationPermission(this);
+        }
 
     }
     //endregion
