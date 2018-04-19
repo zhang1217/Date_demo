@@ -261,7 +261,7 @@ public class Tools {
     public static void CheckNotificationPermission(final Context context) {
         if (!NotificationManagerCompat.from(context).areNotificationsEnabled()) {
             final QMUIDialog.CheckBoxMessageDialogBuilder builder = new QMUIDialog.CheckBoxMessageDialogBuilder(context)
-                    .setTitle("为防止程序通知异常,请打开通知权限!")
+                    .setTitle("请打开通知权限!")
                     .setMessage("下次不再提醒")
                     .setChecked(true);
             builder.addAction("取消", new QMUIDialogAction.ActionListener() {

@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         //获取权限
         String item = Tools.ReadPreferences(this, "NotificationPermission", getResources().getString(R.string.permission_name));
-        if (!NotificationManagerCompat.from(this).areNotificationsEnabled() || item.equals("") || item.equals("0")) {
+        if (item.equals("") || item.equals("0")) {
             Tools.CheckNotificationPermission(this);
         }
 
