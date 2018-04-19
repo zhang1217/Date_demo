@@ -237,6 +237,7 @@ public class Tools {
 
     /**
      * 读取Preferences
+     *
      * @param context 上下文
      * @param key     key
      * @param name    文件名
@@ -260,34 +261,21 @@ public class Tools {
      */
     public static void CheckNotificationPermission(final Context context) {
         if (!NotificationManagerCompat.from(context).areNotificationsEnabled()) {
-            final QMUIDialog.CheckBoxMessageDialogBuilder builder = new QMUIDialog.CheckBoxMessageDialogBuilder(context)
-                    .setTitle("请打开通知权限!")
-                    .setMessage("下次不再提醒")
-                    .setChecked(true);
-            builder.addAction("取消", new QMUIDialogAction.ActionListener() {
+            new QMUIDialog.MessageDialogBuilder(context)
+                    .setTitle("通知权限!")
+                    .setMessage("防止收不到通知!请打开通知权限!")
+                    .addAction("取消", new QMUIDialogAction.ActionListener() {
+                        @Override
+                        public void onClick(QMUIDialog dialog, int index) {
+                            dialog.dismiss();
+                        }
+                    }).addAction("确定", new QMUIDialogAction.ActionListener() {
                 @Override
                 public void onClick(QMUIDialog dialog, int index) {
-                    if(builder.isChecked()) {
-                        EditPreferences(context, "NotificationPermission", context.getResources().getString(R.string.permission_name), "1");
-                    }else{
-                        EditPreferences(context, "NotificationPermission", context.getResources().getString(R.string.permission_name), "0");
-                    }
-                    dialog.dismiss();
-                }
-            }).addAction("确定", new QMUIDialogAction.ActionListener() {
-                @Override
-                public void onClick(QMUIDialog dialog, int index) {
-                    if(builder.isChecked()) {
-                        EditPreferences(context, "NotificationPermission", context.getResources().getString(R.string.permission_name), "1");
-                    }else{
-                        EditPreferences(context, "NotificationPermission", context.getResources().getString(R.string.permission_name), "0");
-                    }
                     dialog.dismiss();
                     NotificationPermission(context);
                 }
-            });
-            builder.show();
-//            EditPreferences(context, "NotificationPermission", context.getResources().getString(R.string.permission_name), "1");
+            }).show();
         }
     }
     //endregion
