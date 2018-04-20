@@ -8,8 +8,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Parcel;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
-import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -27,7 +28,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
-import java.util.prefs.Preferences;
 
 /**
  * Created by 彬彬 on 2018/3/28.
@@ -208,6 +208,7 @@ public class Tools {
                 .setContentTitle(model.title)
                 .setContentText(model.text)
                 .setSubText(model.subText)
+                .setTicker(model.ticker)
                 .setSmallIcon(model.smallIcon)
                 .setLargeIcon(model.lagerIcon)
                 .setWhen(model.when)
@@ -215,6 +216,7 @@ public class Tools {
                 .setDefaults(model.defaults)
                 .setVisibility(model.visibility)
                 .build();
+        notification.flags = Notification.FLAG_AUTO_CANCEL;
         manager.notify(id, notification);
     }
     //endregion
@@ -259,9 +261,9 @@ public class Tools {
      *
      * @param context 上下文
      */
-    public static void CheckNotificationPermission(final Context context) {
+    static void CheckNotificationPermission(final Context context) {
         if (!NotificationManagerCompat.from(context).areNotificationsEnabled()) {
-            new QMUIDialog.MessageDialogBuilder(context)
+            QMUIDialog.MessageDialogBuilder builder = new QMUIDialog.MessageDialogBuilder(context)
                     .setTitle("通知权限!")
                     .setMessage("防止收不到通知!请打开通知权限!")
                     .addAction("取消", new QMUIDialogAction.ActionListener() {
@@ -270,12 +272,13 @@ public class Tools {
                             dialog.dismiss();
                         }
                     }).addAction("确定", new QMUIDialogAction.ActionListener() {
-                @Override
-                public void onClick(QMUIDialog dialog, int index) {
-                    dialog.dismiss();
-                    NotificationPermission(context);
-                }
-            }).show();
+                        @Override
+                        public void onClick(QMUIDialog dialog, int index) {
+                            dialog.dismiss();
+                            NotificationPermission(context);
+                        }
+                    });
+            builder.show();
         }
     }
     //endregion

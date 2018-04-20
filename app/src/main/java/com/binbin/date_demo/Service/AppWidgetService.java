@@ -49,7 +49,7 @@ public class AppWidgetService extends Service {
                         if (day <= 2 && model.isSend == 0) {
                             //发送通知
                             NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-                            ShowNotification notification = new ShowNotification(model.Name, "您的" + model.Name + "还有两天就到了", model.Desc, R.drawable.time,
+                            ShowNotification notification = new ShowNotification(model.Name, "您的" + model.Name + "还有两天就到了", model.Desc,"日期通知", R.drawable.time,
                                     BitmapFactory.decodeResource(getResources(), R.drawable.time), System.currentTimeMillis(), true, Notification.DEFAULT_ALL, Notification.VISIBILITY_PRIVATE);
                             Tools.ShowNotification(getApplicationContext(), notification, manager, notifID);
                             notifID++;
@@ -59,7 +59,7 @@ public class AppWidgetService extends Service {
                         if (day < 1 && model.isSend == 2) {
                             //发送通知
                             NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-                            ShowNotification notification = new ShowNotification(model.Name, "您的" + model.Name + "就要到了", model.Desc, R.drawable.time,
+                            ShowNotification notification = new ShowNotification(model.Name, "您的" + model.Name + "就要到了", model.Desc,"日期通知", R.drawable.time,
                                     BitmapFactory.decodeResource(getResources(), R.drawable.time), System.currentTimeMillis(), true, Notification.DEFAULT_ALL, Notification.VISIBILITY_PRIVATE);
                             Tools.ShowNotification(getApplicationContext(), notification, manager, notifID);
                             notifID++;

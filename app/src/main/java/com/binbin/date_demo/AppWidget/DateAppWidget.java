@@ -107,7 +107,7 @@ public class DateAppWidget extends AppWidgetProvider {
                     if (day <= 2 && model.isSend == 0) {
                         //发送通知
                         NotificationManager manager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
-                        ShowNotification notification = new ShowNotification(model.Name, "您的" + model.Name + "还有两天就到了", model.Desc, R.drawable.time,
+                        ShowNotification notification = new ShowNotification(model.Name, "您的" + model.Name + "还有两天就到了", model.Desc,"日期通知", R.drawable.time,
                                 BitmapFactory.decodeResource(context.getResources(), R.drawable.time), System.currentTimeMillis(), true, Notification.DEFAULT_ALL, Notification.VISIBILITY_PRIVATE);
                         Tools.ShowNotification(context.getApplicationContext(), notification, manager, 0);
                         model.isSend = 2;
@@ -116,7 +116,7 @@ public class DateAppWidget extends AppWidgetProvider {
                     if (day < 1 && model.isSend == 2) {
                         //发送通知
                         NotificationManager manager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
-                        ShowNotification notification = new ShowNotification(model.Name, "您的" + model.Name + "就要到了", model.Desc, R.drawable.time,
+                        ShowNotification notification = new ShowNotification(model.Name, "您的" + model.Name + "就要到了", model.Desc,"日期通知", R.drawable.time,
                                 BitmapFactory.decodeResource(context.getResources(), R.drawable.time), System.currentTimeMillis(), true, Notification.DEFAULT_ALL, Notification.VISIBILITY_PRIVATE);
                         Tools.ShowNotification(context, notification, manager, 0);
                         model.isSend = 1;
